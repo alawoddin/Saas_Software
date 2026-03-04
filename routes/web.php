@@ -28,6 +28,7 @@ Route::middleware(['auth', IsUser::class])->group(function () {
 Route::prefix('admin')->middleware(['auth', IsAdmin::class])->group(function () {
 
     Route::get('/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 });
 
 ////// end route for user 
