@@ -6,14 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    public function AdminDashboard() {
+    public function AdminDashboard()
+    {
         return view('admin.index');
     }
 
-       public function AdminLogout(Request $request){
+    public function AdminLogout(Request $request)
+    {
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
@@ -24,14 +27,16 @@ class AdminController extends Controller
     }
     //End Method
 
-      public function AdminProfile(){
+    public function AdminProfile()
+    {
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('admin.admin_profile',compact('profileData'));
+        return view('admin.admin_profile', compact('profileData'));
     }
-        //End Method
-        
-         public function AdminProfileStore(Request $request){
+    //End Method
+
+    public function AdminProfileStore(Request $request)
+    {
         $id = Auth::user()->id;
         $data = User::find($id);
 
@@ -43,10 +48,10 @@ class AdminController extends Controller
         $oldPhotoPath = $data->photo;
 
         if ($request->hasFile('photo')) {
-           $file = $request->file('photo');
-           $filename = time().'.'.$file->getClientOriginalExtension();
-           $file->move(public_path('upload/admin_images'),$filename);
-           $data->photo = $filename;
+            $file = $request->file('photo');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('upload/admin_images'), $filename);
+            $data->photo = $filename;
         }
 
         if ($oldPhotoPath && $oldPhotoPath !== $filename) {
@@ -60,25 +65,65 @@ class AdminController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
-
-
+        return redirect()->back()->with($notification);
     }
-     //End Method 
+    //End Method 
 
-     private function deleteOldImage(string $oldPhotoPath) : void {
-        $fullPath = public_path('upload/admin_images/'.$oldPhotoPath);
+    private function deleteOldImage(string $oldPhotoPath): void
+    {
+        $fullPath = public_path('upload/admin_images/' . $oldPhotoPath);
         if (file_exists($fullPath)) {
             unlink($fullPath);
         }
-     }
-      //End private Method 
+    }
+    //End private Method 
+
+     public function AdminChangePassword(){
+
+        return view('admin.change_password');
+
+    }
+      //End Method 
 
       
+    public function AdminPasswordUpdate(Request $request){
 
-       
+     $user = Auth::user();
+     $request->validate([
+        'old_password' => 'required',
+        'new_password' => 'required|confirmed'
+     ]);
 
-
+     if (!Hash::check($request->old_password, $user->password)) {
         
+        $notification = array(
+            'message' => 'Old Password Does not Match!',
+            'alert-type' => 'error'
+        ); 
+        return back()->with($notification); 
+     }
+
+     User::whereId($user->id)->update([
+        'password' => Hash::make($request->new_password) 
+     ]);
+
+     Auth::logout();
+
+     $notification = array(
+            'message' => 'Password Updated Successfully',
+            'alert-type' => 'error'
+        ); 
+        return redirect()->route('login')->with($notification); 
+
+    }
+       //End Method  
+
+
+
+
+
+
+
+
 
 }

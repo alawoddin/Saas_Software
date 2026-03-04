@@ -178,9 +178,9 @@
 
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item">
+                        <a href="{{ route('admin.change.password') }}" class="dropdown-item">
                             <i class="ri-settings-2-line me-1 fs-16 align-middle"></i>
-                            <span class="align-middle">Settings</span>
+                            <span class="align-middle">Change passowrd</span>
                         </a>
 
                         <!-- item-->
