@@ -7,6 +7,6 @@ use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
     public function AdminDashboard() {
-        return view('admin.admin_master');
+        return view('admin.index');
     }
 }

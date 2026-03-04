@@ -25,9 +25,9 @@ Route::middleware(['auth', IsUser::class])->group(function () {
 
 //////// only for user route
 
-Route::middleware(['auth', IsAdmin::class])->group(function () {
+Route::prefix('admin')->middleware(['auth', IsAdmin::class])->group(function () {
 
-    Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 });
 
 ////// end route for user 
