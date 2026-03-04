@@ -5,13 +5,13 @@
                         <!-- Brand Logo -->
                         <a href="index.html" class="logo">
                             <span class="logo-light">
-                                <span class="logo-lg"><img src="assets/images/logo.png" alt="logo"></span>
-                                <span class="logo-sm"><img src="assets/images/logo-sm.png" alt="small logo"></span>
+                                <span class="logo-lg"><img src="{{ asset('backend/assets/images/logo.png') }}" alt="logo"></span>
+                                <span class="logo-sm"><img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="small logo"></span>
                             </span>
 
                             <span class="logo-dark">
-                                <span class="logo-lg"><img src="assets/images/logo-dark.png" alt="dark logo"></span>
-                                <span class="logo-sm"><img src="assets/images/logo-sm.png" alt="small logo"></span>
+                                <span class="logo-lg"><img src="{{ asset('backend/assets/images/logo-dark.png') }}" alt="dark logo"></span>
+                                <span class="logo-sm"><img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="small logo"></span>
                             </span>
                         </a>
 
@@ -56,54 +56,7 @@
                         </div>
 
                         <!-- Language Dropdown -->
-                        <div class="topbar-item">
-                            <div class="dropdown">
-                                <button class="topbar-link" data-bs-toggle="dropdown" data-bs-offset="0,25" type="button"
-                                    aria-haspopup="false" aria-expanded="false">
-                                    <img src="assets/images/flags/us.svg" alt="user-image" class="w-100 rounded" height="18"
-                                        id="selected-language-image">
-                                </button>
-
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="en">
-                                        <img src="assets/images/flags/us.svg" alt="user-image" class="me-1 rounded" height="18"
-                                            data-translator-image> <span class="align-middle">English</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="hi">
-                                        <img src="assets/images/flags/in.svg" alt="user-image" class="me-1 rounded" height="18"
-                                            data-translator-image> <span class="align-middle">Hindi</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <img src="assets/images/flags/de.svg" alt="user-image" class="me-1 rounded" height="18">
-                                        <span class="align-middle">German</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <img src="assets/images/flags/it.svg" alt="user-image" class="me-1 rounded" height="18">
-                                        <span class="align-middle">Italian</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <img src="assets/images/flags/es.svg" alt="user-image" class="me-1 rounded" height="18">
-                                        <span class="align-middle">Spanish</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <img src="assets/images/flags/ru.svg" alt="user-image" class="me-1 rounded" height="18">
-                                        <span class="align-middle">Russian</span>
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <!-- Notification Dropdown -->
                         <div class="topbar-item">
@@ -147,7 +100,7 @@
                                         <div class="dropdown-item notification-item py-2 text-wrap active" id="notification-1">
                                             <span class="d-flex align-items-center">
                                                 <span class="me-3 position-relative flex-shrink-0">
-                                                    <img src="assets/images/users/avatar-2.jpg" class="avatar-lg rounded-circle"
+                                                    <img src="{{asset('backend/assets/images/users/avatar-2.jpg')}}" class="avatar-lg rounded-circle"
                                                         alt="" />
                                                 </span>
                                                 <span class="flex-grow-1 text-muted">
@@ -166,99 +119,7 @@
                                             </span>
                                         </div>
 
-                                        <!-- item-->
-                                        <div class="dropdown-item notification-item py-2 text-wrap" id="notification-2">
-                                            <span class="d-flex align-items-center">
-                                                <span class="me-3 position-relative flex-shrink-0">
-                                                    <img src="assets/images/users/avatar-4.jpg" class="avatar-lg rounded-circle"
-                                                        alt="" />
-                                                </span>
-                                                <span class="flex-grow-1 text-muted">
-                                                    <span class="fw-medium text-body">Tommy Berry</span> donated <span
-                                                        class="text-success">$100.00</span> for <span
-                                                        class="fw-medium text-body">Carbon removal program</span>
-                                                    <br />
-                                                    <span class="fs-12">58m ago</span>
-                                                </span>
-                                                <span class="notification-item-close">
-                                                    <button type="button"
-                                                        class="btn btn-ghost-danger rounded-circle btn-sm btn-icon"
-                                                        data-dismissible="#notification-2">
-                                                        <i class="ri-close-line fs-16"></i>
-                                                    </button>
-                                                </span>
-                                            </span>
-                                        </div>
-
-                                        <!-- item-->
-                                        <div class="dropdown-item notification-item py-2 text-wrap" id="notification-3">
-                                            <span class="d-flex align-items-center">
-                                                <div class="avatar-lg flex-shrink-0 me-3">
-                                                    <span class="avatar-title bg-success-subtle text-success rounded-circle fs-22">
-                                                        <iconify-icon icon="solar:wallet-money-bold-duotone"></iconify-icon>
-                                                    </span>
-                                                </div>
-                                                <span class="flex-grow-1 text-muted">
-                                                    You withdraw a <span class="fw-medium text-body">$500</span> by <span
-                                                        class="fw-medium text-body">New York ATM</span>
-                                                    <br />
-                                                    <span class="fs-12">2h ago</span>
-                                                </span>
-                                                <span class="notification-item-close">
-                                                    <button type="button"
-                                                        class="btn btn-ghost-danger rounded-circle btn-sm btn-icon"
-                                                        data-dismissible="#notification-3">
-                                                        <i class="ri-close-line fs-16"></i>
-                                                    </button>
-                                                </span>
-                                            </span>
-                                        </div>
-
-                                        <!-- item-->
-                                        <div class="dropdown-item notification-item py-2 text-wrap" id="notification-4">
-                                            <span class="d-flex align-items-center">
-                                                <span class="me-3 position-relative flex-shrink-0">
-                                                    <img src="assets/images/users/avatar-7.jpg" class="avatar-lg rounded-circle"
-                                                        alt="" />
-                                                </span>
-                                                <span class="flex-grow-1 text-muted">
-                                                    <span class="fw-medium text-body">Richard Allen</span> followed you in <span
-                                                        class="fw-medium text-body">Facebook</span>
-                                                    <br />
-                                                    <span class="fs-12">3h ago</span>
-                                                </span>
-                                                <span class="notification-item-close">
-                                                    <button type="button"
-                                                        class="btn btn-ghost-danger rounded-circle btn-sm btn-icon"
-                                                        data-dismissible="#notification-4">
-                                                        <i class="ri-close-line fs-16"></i>
-                                                    </button>
-                                                </span>
-                                            </span>
-                                        </div>
-
-                                        <!-- item-->
-                                        <div class="dropdown-item notification-item py-2 text-wrap" id="notification-5">
-                                            <span class="d-flex align-items-center">
-                                                <span class="me-3 position-relative flex-shrink-0">
-                                                    <img src="assets/images/users/avatar-10.jpg" class="avatar-lg rounded-circle"
-                                                        alt="" />
-                                                </span>
-                                                <span class="flex-grow-1 text-muted">
-                                                    <span class="fw-medium text-body">Victor Collier</span> liked you recent photo
-                                                    in <span class="fw-medium text-body">Instagram</span>
-                                                    <br />
-                                                    <span class="fs-12">10h ago</span>
-                                                </span>
-                                                <span class="notification-item-close">
-                                                    <button type="button"
-                                                        class="btn btn-ghost-danger rounded-circle btn-sm btn-icon"
-                                                        data-dismissible="#notification-5">
-                                                        <i class="ri-close-line fs-16"></i>
-                                                    </button>
-                                                </span>
-                                            </span>
-                                        </div>
+                                   
                                     </div>
 
                                     <!-- All-->
@@ -270,89 +131,9 @@
                             </div>
                         </div>
 
-                        <!-- Apps Dropdown -->
-                        <div class="topbar-item d-none d-sm-flex">
-                            <div class="dropdown">
-                                <button class="topbar-link dropdown-toggle drop-arrow-none" data-bs-toggle="dropdown"
-                                    data-bs-offset="0,18" type="button" aria-haspopup="false" aria-expanded="false">
-                                    <i class="ri-apps-2-add-line fs-22"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg p-0">
-                                    <div class="p-2">
-                                        <div class="row g-0">
-                                            <div class="col">
-                                                <a class="dropdown-icon-item" href="#">
-                                                    <img src="assets/images/brands/slack.svg" alt="slack">
-                                                    <span>Slack</span>
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a class="dropdown-icon-item" href="#">
-                                                    <img src="assets/images/brands/gitlab.svg" alt="Github">
-                                                    <span>Gitlab</span>
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a class="dropdown-icon-item" href="#">
-                                                    <img src="assets/images/brands/dribbble.svg" alt="dribbble">
-                                                    <span>Dribbble</span>
-                                                </a>
-                                            </div>
-                                        </div>
+                     
 
-                                        <div class="row g-0">
-                                            <div class="col">
-                                                <a class="dropdown-icon-item" href="#">
-                                                    <img src="assets/images/brands/bitbucket.svg" alt="bitbucket">
-                                                    <span>Bitbucket</span>
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a class="dropdown-icon-item" href="#">
-                                                    <img src="assets/images/brands/dropbox.svg" alt="dropbox">
-                                                    <span>Dropbox</span>
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a class="dropdown-icon-item" href="#">
-                                                    <img src="assets/images/brands/google-cloud.svg" alt="G Suite">
-                                                    <span>G Cloud</span>
-                                                </a>
-                                            </div>
-                                        </div> <!-- end row-->
-
-                                        <div class="row g-0">
-                                            <div class="col">
-                                                <a class="dropdown-icon-item" href="#">
-                                                    <img src="assets/images/brands/aws.svg" alt="bitbucket">
-                                                    <span>AWS</span>
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a class="dropdown-icon-item" href="#">
-                                                    <img src="assets/images/brands/digital-ocean.svg" alt="dropbox">
-                                                    <span>Server</span>
-                                                </a>
-                                            </div>
-                                            <div class="col">
-                                                <a class="dropdown-icon-item" href="#">
-                                                    <img src="assets/images/brands/bootstrap.svg" alt="G Suite">
-                                                    <span>Bootstrap</span>
-                                                </a>
-                                            </div>
-                                        </div> <!-- end row-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Button Trigger Customizer Offcanvas -->
-                        <div class="topbar-item d-none d-sm-flex">
-                            <button class="topbar-link" data-bs-toggle="offcanvas" data-bs-target="#theme-settings-offcanvas"
-                                type="button">
-                                <i class="ri-settings-4-line fs-22"></i>
-                            </button>
-                        </div>
+                    
 
                         <!-- Light/Dark Mode Button -->
                         <div class="topbar-item d-none d-sm-flex">
@@ -367,7 +148,7 @@
                             <div class="dropdown">
                                 <a class="topbar-link dropdown-toggle drop-arrow-none px-2" data-bs-toggle="dropdown"
                                     data-bs-offset="0,19" type="button" aria-haspopup="false" aria-expanded="false">
-                                    <img src="assets/images/users/avatar-1.jpg" width="32" class="rounded-circle me-lg-2 d-flex"
+                                    <img src="{{asset('backend/assets/images/users/avatar-1.jpg')}}" width="32" class="rounded-circle me-lg-2 d-flex"
                                         alt="user-image">
                                     <span class="d-lg-flex flex-column gap-1 d-none">
                                         <h5 class="my-0">Tom Werner</h5>
@@ -386,12 +167,7 @@
                                         <span class="align-middle">My Account</span>
                                     </a>
 
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <i class="ri-wallet-3-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Wallet : <span class="fw-semibold">$89.25k</span></span>
-                                    </a>
-
+                                 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item">
                                         <i class="ri-settings-2-line me-1 fs-16 align-middle"></i>
@@ -406,11 +182,7 @@
 
                                     <div class="dropdown-divider"></div>
 
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">
-                                        <i class="ri-lock-line me-1 fs-16 align-middle"></i>
-                                        <span class="align-middle">Lock Screen</span>
-                                    </a>
+                                
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item active fw-semibold text-danger">
