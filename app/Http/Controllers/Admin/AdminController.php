@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -22,4 +23,62 @@ class AdminController extends Controller
         return redirect('/login');
     }
     //End Method
+
+      public function AdminProfile(){
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('admin.admin_profile',compact('profileData'));
+    }
+        //End Method
+        
+         public function AdminProfileStore(Request $request){
+        $id = Auth::user()->id;
+        $data = User::find($id);
+
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->address = $request->address;
+
+        $oldPhotoPath = $data->photo;
+
+        if ($request->hasFile('photo')) {
+           $file = $request->file('photo');
+           $filename = time().'.'.$file->getClientOriginalExtension();
+           $file->move(public_path('upload/admin_images'),$filename);
+           $data->photo = $filename;
+        }
+
+        if ($oldPhotoPath && $oldPhotoPath !== $filename) {
+            $this->deleteOldImage($oldPhotoPath);
+        }
+
+        $data->save();
+
+        $notification = array(
+            'message' => 'Admin Profile updated successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification); 
+
+
+    }
+     //End Method 
+
+     private function deleteOldImage(string $oldPhotoPath) : void {
+        $fullPath = public_path('upload/admin_images/'.$oldPhotoPath);
+        if (file_exists($fullPath)) {
+            unlink($fullPath);
+        }
+     }
+      //End private Method 
+
+      
+
+       
+
+
+        
+
 }

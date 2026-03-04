@@ -29,6 +29,9 @@ Route::prefix('admin')->middleware(['auth', IsAdmin::class])->group(function () 
 
     Route::get('/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
+     Route::get('/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
+     Route::post('/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
+
 });
 
 ////// end route for user 
