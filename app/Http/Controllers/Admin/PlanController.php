@@ -47,14 +47,14 @@ class PlanController extends Controller
      // End Method 
 
       public function UpdatePlan(Request $request){
-        $plan_id = $request->id;
+        $plan = Plan::findOrFail($request->id);
 
-        Plan::find($plan_id)->update([
-            'name' => $request->name,
-            'token_limit' => $request->token_limit,
-            'template_limit' => $request->template_limit,
-            'price' => $request->price,
-        ]);
+$plan->update([
+    'name' => $request->name,
+    'token_limit' => $request->token_limit,
+    'template_limit' => $request->template_limit,
+    'price' => $request->price,
+]);
 
         $notification = array(
             'message' => 'Plans Updated successfully',
@@ -66,7 +66,7 @@ class PlanController extends Controller
      // End Method
 
          public function DeletePlan($id){
-        Plan::find($id)->delete();
+        Plan::findOrFail($id)->delete();
 
         $notification = array(
             'message' => 'Plans Deleted successfully',
