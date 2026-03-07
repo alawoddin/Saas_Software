@@ -22,8 +22,7 @@
 
       <div class="mb-3">
         <label for="description" class="form-label fw-semibold text-white">Description <span class="text-muted">(Optional)</span> </label>
-         <textarea name="description" id="description" rows="3" class="form-control" placeholder="Describe your project.. what kind of website do you want to build?">          
-         </textarea>
+         <textarea name="description" id="description" rows="3" class="form-control" placeholder="Describe your project.. what kind of website do you want to build?"></textarea>
         <small class="text-muted">This will help the AI understand your project better</small>
      </div>
 
@@ -155,6 +154,70 @@
         </div> 
     </div> 
 </div> 
+
+
+<script>
+    function selectTemplate(type){
+        document.querySelectorAll('.template-option').forEach(option => {
+            option.classList.remove('border-primary','bg-light');
+            option.classList.add('border','border-secondary');
+        });
+
+    event.currentTarget.classList.remove('border','border-secondary');
+    event.currentTarget.classList.add('border-primary','bg-light');
+
+    document.getElementById('template_type').value = type;
+
+    const promptSection = document.getElementById('initial-prompt-section');
+    const promptTextarea = document.getElementById('initial_prompt');
+    const apiPromptInput = document.getElementById('api_prompt');
+
+    if (type && type !== 'custom') {
+        promptSection.style.display = 'block';
+        const defaultPrompts = {
+            'landing': 'Create a modern, professional landing page for a tech startup. ',
+            'portfolio': 'Create a creative portfolio website for a designer. Include sections for about, projects/gallery, skills, and contact.',
+            'blog': 'Create a clean, readable blog website. Include a header with navigation, main content area for blog posts, sidebar with recent posts and categories, and footer.'
+        };
+      promptTextarea.value = defaultPrompts[type] || '';
+      apiPromptInput.value = defaultPrompts[type] || '';
+    }else {
+        promptSection.style.display = 'none';
+        promptTextarea.value = '';
+        apiPromptInput.value = '';
+      }
+
+    }
+
+document.addEventListener('DOMContentLoaded',function(){
+    const form = document.getElementById('project-form');
+    const nameInput = document.getElementById('name');
+    const descriptionTextarea = document.getElementById('description');
+    const apiPromptInput = document.getElementById('api_prompt');
+
+    nameInput.focus();
+
+    /// update api_prompt for when description will be change 
+    descriptionTextarea.addEventListener('input', function(){
+        if (!document.getElementById('template_type').value) {
+            apiPromptInput.value = this.value;            
+        }
+    });
+
+    form.addEventListener('submit', function(e){
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Creating Project.... 
+        `;
+    })
+})
+
+
+
+
+</script>
 
 
 
