@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class PlanController extends Controller
 {
     public function AllPlan() {
+       
         $plan = Plan::latest()->get();
         return view('admin.backend.plan.all_plan' , compact('plan'));
     }
