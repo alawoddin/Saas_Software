@@ -4,7 +4,7 @@
 <div class="container-fluid py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0 text-white">My Projects</h1>
-        <a href="" class="btn btn-primary">New Project</a> 
+        <a href="{{ route('projects.create') }}" class="btn btn-primary">New Project</a> 
     </div>
 
 @if ($projects->count() > 0)
@@ -38,7 +38,7 @@
     </div>
     <h3 class="h5 text-white mb-2">No Projects Yet</h3>
     <p class="text-muted mb-4">Get started by creating your first AI-Generated website</p>
-    <a href="" class="btn btn-primary">Cerate Your First Project</a> 
+    <a href="{{ route('projects.create') }}" class="btn btn-primary">Cerate Your First Project</a>
   </div>
     
 @endif 

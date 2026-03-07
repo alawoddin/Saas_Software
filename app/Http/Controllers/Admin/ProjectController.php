@@ -13,5 +13,11 @@ class ProjectController extends Controller
         return view('admin.backend.projects.index',compact('projects'));
     }
     // End Method
+
+     public function CreateProject(){
+        return view('admin.backend.projects.create');
+    }
+      // End Method 
+      
 }
  
