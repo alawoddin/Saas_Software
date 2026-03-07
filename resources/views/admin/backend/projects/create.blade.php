@@ -211,14 +211,48 @@ document.addEventListener('DOMContentLoaded',function(){
             <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
             Creating Project.... 
         `;
-    })
-})
+    });
+});
 
+const descriptionTextarea = document.getElementById('description');
+if (descriptionTextarea) {
+    descriptionTextarea.addEventListener('input', function(){
+        const maxLength = 500;
+        const currentLength = this.value.length;
 
-
-
+    let counter = document.getElementById('description-counter');
+    if (!counter) {
+        counter = document.createElement('div');
+        counter.id = 'description-counter';
+        counter.className = 'text-muted small mt-1 text-end';
+    }
+    counter.textContent = `${currentLength}/${maxLength} characters`;
+    if (currentLength > maxLength * 0.9) {
+        counter.classList.add('text-warning');
+    }else {
+        counter.classList.remove('text-warning')
+      }
+    });
+} 
 </script>
 
+ <style>
+.template-option {
+    transition: all 0.2s ease;
+}
 
+.template-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25) !important;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+</style>
 
 @endsection
