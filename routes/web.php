@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PlanController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,13 @@ Route::prefix('admin')->middleware(['auth', IsAdmin::class])->group(function () 
         Route::get('/delete/plan/{id}', 'DeletePlan')->name('delete.plan');
 
     });
+
+     Route::controller(ProjectController::class)->group(function(){
+    Route::get('/all/projects', 'AllProjects')->name('all.projects');
+    
+
+  });
+
 
 });
 
